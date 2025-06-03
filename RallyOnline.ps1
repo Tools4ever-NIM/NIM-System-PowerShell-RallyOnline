@@ -66,7 +66,7 @@ function Idm-SystemInfo {
         [string] $ConnectionParams
     )
 
-    Log info "-Connection=$Connection -TestConnection=$TestConnection -Configuration=$Configuration -ConnectionParams='$ConnectionParams'"
+    Log verbose "-Connection=$Connection -TestConnection=$TestConnection -Configuration=$Configuration -ConnectionParams='$ConnectionParams'"
 
     if ($Connection) {
         @(
@@ -156,7 +156,7 @@ function Idm-SystemInfo {
         @()
     }
 
-    Log info "Done"
+    Log verbose "Done"
 }
 
 function Idm-OnUnload {
@@ -234,7 +234,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
                     $hash_table[$prop] = ""
                 }
 
-                log info "Total Results to process: $($response.data.count)"
+                Log verbose "Total Results to process: $($response.data.count)"
                 foreach($rowItem in $response.data) {
                     $row = New-Object -TypeName PSObject -Property $hash_table
 
@@ -334,7 +334,7 @@ public class TrustAllCertsPolicy : ICertificatePolicy {
                     $hash_table[$prop] = ""
                 }
 
-                log info "Total Results to process: $($response.data.count)"
+                Log verbose "Total Results to process: $($response.data.count)"
                 foreach($rowItem in $response.data) {
                     $row = New-Object -TypeName PSObject -Property $hash_table
 
