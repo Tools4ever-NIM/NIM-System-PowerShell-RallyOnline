@@ -1,6 +1,8 @@
+# version: 1.1.1
 #
 # RallyOnline.ps1 - Rally Online
 #
+
 
 $Log_MaskableKeys = @(
     'Password',
@@ -165,6 +167,15 @@ function Idm-SystemInfo {
 				disabled = '!table_1_name'
                 hidden = '!table_1_name'
             }
+            @{
+                name = 'table_1_legacy'
+                type = 'checkbox'
+                label = 'Table 1 Legacy Endpoint?'
+                description = 'Legacy Endpoint uses /get/form_builder_results instead of /get/custom_form_results'
+                value = $false
+				disabled = '!table_1_name'
+                hidden = '!table_1_name'
+            }
             ##############################
             @{
 				name = 'table_2_header'
@@ -190,6 +201,15 @@ function Idm-SystemInfo {
 				disabled = '!table_1_name'
 				hidden = '!table_1_name'
 			}
+             @{
+                name = 'table_2_legacy'
+                type = 'checkbox'
+                label = 'Table 2 Legacy Endpoint?'
+                description = 'Legacy Endpoint uses /get/form_builder_results instead of /get/custom_form_results'
+                value = $false
+				disabled = '!table_1_name'
+                hidden = '!table_1_name'
+            }
             ##############################
             @{
 				name = 'table_3_header'
@@ -215,6 +235,15 @@ function Idm-SystemInfo {
 				disabled = '!table_2_name'
 				hidden = '!table_2_name'
 			}
+             @{
+                name = 'table_3_legacy'
+                type = 'checkbox'
+                label = 'Table 3 Legacy Endpoint?'
+                description = 'Legacy Endpoint uses /get/form_builder_results instead of /get/custom_form_results'
+                value = $false
+				disabled = '!table_2_name'
+                hidden = '!table_2_name'
+            }
             ##############################
 			@{
 				name = 'table_4_header'
@@ -240,6 +269,15 @@ function Idm-SystemInfo {
 				disabled = '!table_3_name'
 				hidden = '!table_3_name'
 			}
+            @{
+                name = 'table_4_legacy'
+                type = 'checkbox'
+                label = 'Table 4 Legacy Endpoint?'
+                description = 'Legacy Endpoint uses /get/form_builder_results instead of /get/custom_form_results'
+                value = $false
+				disabled = '!table_3_name'
+                hidden = '!table_3_name'
+            }
             ##############################
 			@{
 				name = 'table_5_header'
@@ -265,6 +303,15 @@ function Idm-SystemInfo {
 				disabled = '!table_4_name'
 				hidden = '!table_4_name'
 			}
+            @{
+                name = 'table_5_legacy'
+                type = 'checkbox'
+                label = 'Table 5 Legacy Endpoint?'
+                description = 'Legacy Endpoint uses /get/form_builder_results instead of /get/custom_form_results'
+                value = $false
+				disabled = '!table_4_name'
+                hidden = '!table_4_name'
+            }
             ##############################
 			@{
 				name = 'table_6_header'
@@ -290,6 +337,15 @@ function Idm-SystemInfo {
 				disabled = '!table_5_name'
 				hidden = '!table_5_name'
 			}
+            @{
+                name = 'table_6_legacy'
+                type = 'checkbox'
+                label = 'Table 6 Legacy Endpoint?'
+                description = 'Legacy Endpoint uses /get/form_builder_results instead of /get/custom_form_results'
+                value = $false
+				disabled = '!table_5_name'
+                hidden = '!table_5_name'
+            }
             ##############################
 			@{
 				name = 'table_7_header'
@@ -315,6 +371,15 @@ function Idm-SystemInfo {
 				disabled = '!table_6_name'
 				hidden = '!table_6_name'
 			}
+            @{
+                name = 'table_7_legacy'
+                type = 'checkbox'
+                label = 'Table 7 Legacy Endpoint?'
+                description = 'Legacy Endpoint uses /get/form_builder_results instead of /get/custom_form_results'
+                value = $false
+				disabled = '!table_6_name'
+                hidden = '!table_6_name'
+            }
             ##############################
 			@{
 				name = 'table_8_header'
@@ -340,6 +405,15 @@ function Idm-SystemInfo {
 				disabled = '!table_7_name'
 				hidden = '!table_7_name'
 			}
+            @{
+                name = 'table_8_legacy'
+                type = 'checkbox'
+                label = 'Table 8 Legacy Endpoint?'
+                description = 'Legacy Endpoint uses /get/form_builder_results instead of /get/custom_form_results'
+                value = $false
+				disabled = '!table_7_name'
+                hidden = '!table_7_name'
+            }
             ##############################
 			@{
 				name = 'table_9_header'
@@ -365,6 +439,15 @@ function Idm-SystemInfo {
 				disabled = '!table_8_name'
 				hidden = '!table_8_name'
 			}
+            @{
+                name = 'table_9_legacy'
+                type = 'checkbox'
+                label = 'Table 9 Legacy Endpoint?'
+                description = 'Legacy Endpoint uses /get/form_builder_results instead of /get/custom_form_results'
+                value = $false
+				disabled = '!table_8_name'
+                hidden = '!table_8_name'
+            }
             ##############################
 			@{
 				name = 'table_10_header'
@@ -390,6 +473,15 @@ function Idm-SystemInfo {
 				disabled = '!table_9_name'
 				hidden = '!table_9_name'
 			}
+            @{
+                name = 'table_10_legacy'
+                type = 'checkbox'
+                label = 'Table 10 Legacy Endpoint?'
+                description = 'Legacy Endpoint uses /get/form_builder_results instead of /get/custom_form_results'
+                value = $false
+				disabled = '!table_9_name'
+                hidden = '!table_9_name'
+            }
         )
     }
 
@@ -412,210 +504,6 @@ function Idm-OnUnload {
 #
 # Object CRUD functions
 #
-<#
-function Idm-ExternalContractorsRead {
-    param (
-        # Mode
-        [switch] $GetMeta,    
-        # Parameters
-        [string] $SystemParams,
-        [string] $FunctionParams
-
-    )
-        $system_params   = ConvertFrom-Json2 $SystemParams
-        $function_params = ConvertFrom-Json2 $FunctionParams
-        $Class = 'ExternalContractors'
-        
-        if ($GetMeta) {
-            Get-ClassMetaData -SystemParams $SystemParams -Class $Class
-            
-        } else {
-
-            #Retrieve Report
-            $uri = "https://$($system_params.hostname)/rally_api_v1/get/form_builder_results"
-            
-            $headers = @{
-                "Authorization" = "Bearer $($system_params.client_secret)"
-            }
-
-            try {
-                $splat = @{
-                    Method = "GET"
-                    Uri = $uri
-                    Headers = $headers
-                    Body = @{
-                        key = $system_params.client_secret
-                        form_id = 93
-                    }
-                }
-
-                if($system_params.use_proxy)
-                {
-                    Add-Type @"
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-public class TrustAllCertsPolicy : ICertificatePolicy {
-    public bool CheckValidationResult(
-        ServicePoint srvPoint, X509Certificate certificate,
-        WebRequest request, int certificateProblem) {
-        return true;
-    }
-}
-"@
-[System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
-                    
-                    $splat["Proxy"] = $system_params.proxy_address
-
-                    if($system_params.use_proxy_credentials)
-                    {
-                        $splat["proxyCredential"] = New-Object System.Management.Automation.PSCredential ($system_params.proxy_username, (ConvertTo-SecureString $system_params.proxy_password -AsPlainText -Force) )
-                    }
-                }
-                
-                $response = Invoke-RestMethod @splat -ErrorAction Stop
-                
-                $properties = ($Global:Properties.$Class).name
-                $hash_table = [ordered]@{}
-
-                foreach ($prop in $properties.GetEnumerator()) {
-                    $hash_table[$prop] = ""
-                }
-
-                Log verbose "Total Results to process: $($response.data.count)"
-                foreach($rowItem in $response.data) {
-                    $row = New-Object -TypeName PSObject -Property $hash_table
-
-                    foreach($prop in $rowItem.PSObject.properties) {
-                        if(!$properties.contains($prop.Name)) { 
-							log warn "$($prop.Name) not configured, skipping"
-							continue
-						}
-						if($prop.Name -eq 'Date') {
-							$row.($prop.Name) = try { ([datetime]::ParseExact($prop.Value, "MMM d, yyyy h:mmtt", $null)).ToString("yyyy-MM-dd HH:mm") } catch{}
-						} else {
-							$row.($prop.Name) = $prop.Value
-						}
-					}
-
-                    $row
-                }
-                
-            }
-            catch [System.Net.WebException] {
-                $message = "Error : $($_)"
-                Log error $message
-                Write-Error $_
-            }
-            catch {
-                $message = "Error : $($_)"
-                Log error $message
-                Write-Error $_
-            }
-        }
-}
-
-function Idm-NewEmployeesRead {
-    param (
-        # Mode
-        [switch] $GetMeta,    
-        # Parameters
-        [string] $SystemParams,
-        [string] $FunctionParams
-
-    )
-        $system_params   = ConvertFrom-Json2 $SystemParams
-        $function_params = ConvertFrom-Json2 $FunctionParams
-        $Class = 'NewEmployees'
-        
-        if ($GetMeta) {
-            Get-ClassMetaData -SystemParams $SystemParams -Class $Class
-            
-        } else {
-
-            #Retrieve Report
-            $uri = "https://$($system_params.hostname)/rally_api_v1/get/form_builder_results"
-            
-            $headers = @{
-                "Authorization" = "Bearer $($system_params.client_secret)"
-            }
-
-            try {
-                $splat = @{
-                    Method = "GET"
-                    Uri = $uri
-                    Headers = $headers
-                    Body = @{
-                        key = $system_params.client_secret
-                        form_id = 92
-                    }
-                }
-
-                if($system_params.use_proxy)
-                {
-                    Add-Type @"
-using System.Net;
-using System.Security.Cryptography.X509Certificates;
-public class TrustAllCertsPolicy : ICertificatePolicy {
-    public bool CheckValidationResult(
-        ServicePoint srvPoint, X509Certificate certificate,
-        WebRequest request, int certificateProblem) {
-        return true;
-    }
-}
-"@
-[System.Net.ServicePointManager]::CertificatePolicy = New-Object TrustAllCertsPolicy
-                    
-                    $splat["Proxy"] = $system_params.proxy_address
-
-                    if($system_params.use_proxy_credentials)
-                    {
-                        $splat["proxyCredential"] = New-Object System.Management.Automation.PSCredential ($system_params.proxy_username, (ConvertTo-SecureString $system_params.proxy_password -AsPlainText -Force) )
-                    }
-                }
-                $response = Invoke-RestMethod @splat -ErrorAction Stop
-
-                $properties = ($Global:Properties.$Class).name
-                $hash_table = [ordered]@{}
-
-                foreach ($prop in $properties.GetEnumerator()) {
-                    $hash_table[$prop] = ""
-                }
-
-                Log verbose "Total Results to process: $($response.data.count)"
-                foreach($rowItem in $response.data) {
-                    $row = New-Object -TypeName PSObject -Property $hash_table
-
-                    foreach($prop in $rowItem.PSObject.properties) {
-						if(!$properties.contains($prop.Name)) { 
-							log warn "$($prop.Name) not configured, skipping"
-							continue
-						}
-                        if($prop.Name -eq 'Date') {
-							$row.($prop.Name) = try { ([datetime]::ParseExact($prop.Value, "MMM d, yyyy h:mmtt", $null)).ToString("yyyy-MM-dd HH:mm") } catch{}
-						} else {
-							$row.($prop.Name) = $prop.Value
-						}
-						
-						
-                        }
-
-                    $row
-                } 
-            }
-            catch [System.Net.WebException] {
-                $message = "Error : $($_)"
-                Log error $message
-                Write-Error $_
-            }
-            catch {
-                $message = "Error : $($_)"
-                Log error $message
-                Write-Error $_
-            }
-        }
-}
-
-#>
 
 function Idm-Dispatcher {
     param (
@@ -651,6 +539,7 @@ function Idm-Dispatcher {
                             'Primary key' = ''
                             'Supported operations' = 'R'
                             'Form ID' = $system_params."table_$($i)_form_id"
+                            'Endpoint' = if($system_params."table_$($i)_legacy") { "/rally_api_v1/get/form_builder_results" } else { "/rally_api_v1/get/custom_form_results" }
                         }
                     )
                     }
@@ -680,6 +569,7 @@ function Idm-Dispatcher {
                         key = $system_params.client_secret
                         form_id = $system_params."table_$($i)_form_id"
                     }
+                    $uri = if($system_params."table_$($i)_legacy") { "rally_api_v1/get/form_builder_results" } else { "rally_api_v1/get/custom_form_results" }
                     break
                 }
             }
@@ -687,7 +577,7 @@ function Idm-Dispatcher {
             $splat = @{
                     SystemParams = $system_params
                     Method = "GET"
-                    Uri = "rally_api_v1/get/form_builder_results"
+                    Uri = $uri
                     Body = $body
                     Path = "data"
                 }
